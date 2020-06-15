@@ -1,0 +1,14 @@
+{% extends 'ButterflyApp/base.html' %}
+{% block childblock%}
+{% load staticfiles %}
+<head>
+  <title>Hindi</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body id='bg' background='{% static 'birds.gif' %}'>
+  <center><h1 style='background-color:black;margin-left:150px;margin-right:150px;padding:10px;color:white;'><u>Teach your kids with an amazing experience of fun</u></h1></center>
+<div id='image'>
+  <center><img id='image_src' src="{% static 'hindi.jpg' %}" height="700" width="800" alt="coming"/></center>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'ButterflyApp/base.html'%}
+{% block childblock %}
+{% load staticfiles %}
+<head>
+  <title>About Butterfly</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  footer {
+   position:absolute;
+    bottom:0;
+    width:100%;
+    background-color:black;
+    min-width:1100px;
+  }
+  p {
+    color: white;
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+<div class='jumbotron-nav'>
+  <center><h1 style="color:orange; font-size:25px">The soul purpose of this web application is to educate kids.
+  As we know that, teaching kids is one of the most difficult task
+  and the only way to make study easy, is to make it more interactive and fun
+  loving. So here at <a href='/'><b style="color:blue">Butterfly</b></a> , we make this application and
+  organizing the content in such a way that it is more meaningful and
+  interactive where kids can enjoy the study and become more productive.</h1></center>
+</div>
+<hr>
+<center><img src='{% static 'boat.gif' %}' height=400px width=500px /></center>
+{% endblock %}

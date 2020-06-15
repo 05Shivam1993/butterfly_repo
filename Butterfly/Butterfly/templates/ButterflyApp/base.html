@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <style>
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+
+  }
+   p {
+    color: white;
+    text-align: center;
+  }
+
+body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+  </style>
+</head>
+<body background='{% static 'butterfly4.gif' %}'>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><img src='{% static 'logo2.png' %}' style='height:60px; width:100px;'/>&nbsp;&nbsp;</li>
+      <li><a class='fas fa-home' style='font-size:17px;color:#1dc706' class="active" href="/">Home</a></li>
+      <li><a class='fas fa-book-open' style='font-size:17px;color:#eb1a39' href="/english.html">English</a></li>
+      <li><a class='fas fa-book-open' style='font-size:17px;color:#a4c706' href="/hindi.html">Hindi</a></li>
+      <li><a class='fas fa-calculator' style='font-size:17px;color:#42f59c' href="/mathematics.html">Mathematics</a></li>
+      <li><a class='fas fa-book-open' style='font-size:17px;color:#f542f2' href="/general_knowledge.html">General Knowledge</a></li>
+      <li><a class='fas fa-tools' style='font-size:17px;color:yellow' href='/quiz.html'>Quiz</a></li>
+      <li><a class='fas fa-tools' style='font-size:17px;color:yellow' href='/games.html'>Games</a></li>
+      <li><a class='fas fa-comment-dots' style='font-size:17px;color:skyblue' href="/contact_form.html">Contact</a></li>
+      <li><a class='fas fa-bullhorn' style='font-size:17px;color:orange' href="/about.html">About</a></li>
+      {% if request.session.logged_in != 1 %}
+      <li><a class='fas fa-user-friends' style='font-size:17px;color:#96e3a8' href="/signup">SignUp</a></li>
+      <li><a class='fas fa-user-lock' style='font-size:17px;color:#a759eb' href="/accounts/login">Login</a></li>
+      {% endif %}
+      {% if request.session.logged_in == 1 %}
+        <li><a class='fas fa-lock-open' style='font-size:17px;color:#a759eb' href="/accounts/logout">Logout</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+{% block childblock %}
+{% endblock %}
+<div class='footer'>
+  <p>&copy; {{request.session.year}} Developed by: Shivam Srivastava</p>
+  <p>Contact information: <a href="mailto:shivam.hbti05@gmail.com">shivam.hbti05@gmail.com</a></p>
+</footer>
+</body>
+</html>

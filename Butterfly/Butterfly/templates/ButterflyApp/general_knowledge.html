@@ -1,0 +1,57 @@
+{% extends 'ButterflyApp/base.html' %}
+{% block childblock %}
+<title>General Knowledge</title>
+<div class="container">
+    <section>
+        <div class="page-header" id="faq">
+            <center>
+                <h2><small style='color:orange; font-family:Serif; font-weight:bold; font-size:25px;'>Enhance Your General Knowledge</small></h2>
+            </center>
+        </div>
+        <!--end page header-->
+        <div class="panel-group" id="accordian">
+          {% if que_data %}
+          {% for que in que_data %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <a href="#collapse-{{forloop.counter}}" data-toggle="collapse" data-parent="#accordian">
+{{que.question}}
+</a>
+                    </div>
+                    <!--end panel title-->
+                    <div id="collapse-{{forloop.counter}}" class="panel-collapse collapse ">
+                        <div class="panel-body">
+                            {{que.answer}}
+                        </div>
+                    </div>
+                    <!--end panel collapse-->
+                </div>
+            </div>
+{% endfor %}
+{% endif %}
+</div>
+    </section>
+</div>
+
+{% if page_count > '1' %}
+<center><a id='url' href=''><input type='submit' onclick="pre()" class="btn btn-success" value='Pre'>&nbsp;<input type='submit' onclick="myFunction()" class="btn btn-success" value='Load More'></a>&nbsp;<input type='button' id='page_count' class="btn btn-success" value="{{page_count}}"></center>
+{% elif page_count %}
+<center><a id='url' href=''><input type='submit' onclick="myFunction()" class="btn btn-success" value='Load More'></a>&nbsp;<input type='button' id='page_count' class="btn btn-success" value="{{page_count}}"></center>
+{% else %}
+<center><a id='url' href=''><input type='submit' onclick="pre()" class="btn btn-success" value='Pre'></a>&nbsp;<input type='button' id='page_count' class="btn btn-success" value="{{pre_page_count}}"></center>
+{% endif %}
+</br></br></br></br>
+<script>
+function myFunction(){
+  button_val_pre = Number($('#page_count').val()) + 1;
+  button_val_now = button_val_pre
+  document.getElementById("url").href="/general_knowledge.html/?page_no="+button_val_now;
+}
+function pre(){
+  button_val_pre = Number($('#page_count').val()) - 1;
+  button_val_now = button_val_pre
+  document.getElementById("url").href="/general_knowledge.html/?page_no="+button_val_now;
+}
+</script>
+{% endblock %}

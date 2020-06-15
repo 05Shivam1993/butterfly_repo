@@ -1,0 +1,26 @@
+<html>
+{% load staticfiles %}
+ <head>
+   <title>Login Form</title>
+ </head>
+ <body background='{% static 'birds.gif' %}'>
+   <center><h1><u>Please login first to avail the service</u></h1></center>
+    <form method='post'>
+      <center>
+        <table>
+      {% for field in form %}
+        <tr>
+          <th>{{field.label_tag}}</th>
+          <td>
+            {{ field.errors }}
+            {{ field }}
+          </td>
+        </tr>
+      {% endfor %}
+    </table><br>
+    {% csrf_token %}
+    <button style='background-color:orange; color:white; margin-left: 80px; height:40px; width:100px;'>Submit</button
+    </center>
+    </form>
+  </body>
+</html>

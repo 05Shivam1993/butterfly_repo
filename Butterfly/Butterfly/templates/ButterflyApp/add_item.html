@@ -1,0 +1,14 @@
+<html>
+<head>
+  <title>Cart System</title>
+</head>
+<body>
+  <form method='post'>
+  <center><h2><u>Welcome to Cart System</u></h2>
+  Enter Product : <input type='text' name='item' ><br><br>
+  Enter Quantity : <input type='text' name='quantity' ><br><br>
+  {% csrf_token %}
+  <input type='submit' name='submit' value='Sumit'></center>
+  </form>
+</body>
+</html>

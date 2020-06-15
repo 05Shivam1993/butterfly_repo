@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+<style>
+#mail_gif{
+  margin:auto;
+  margin-top: 50px;
+}
+
+h1{
+  margin-top: 50px;
+  text-align: center;
+  color: #46eb34;
+}
+
+</style>
+</head>
+<body background='{% static 'butterfly4.gif' %}'>
+  <h1><u>Mail Sent Successfully</u></h1>
+<div id='mail_gif'>
+  <center><img src="{% static 'send_mail.gif' %}"/></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+{% extends 'ButterflyApp/base.html' %}
+{% block childblock %}
+{% load staticfiles %}
+<head>
+  <title>Mathematics</title>
+  <style>
+#input,#input_num,#addition,#subtraction,#multiplication,#divison,#frame,#frame2{
+  display: none;
+}
+
+::placeholder {
+  color: white;
+  /* opacity: 1; /* Firefox */
+}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body id='bg' background='{% static 'birds.gif' %}'>
+  <table style='margin:auto'>
+  <tr>
+    <td><button id='add' class="btn btn-success" style='margin-left:6px; font-size:25px;'>Addition</button></td>
+    <td><button id='sub' class="btn btn-success" style='margin-left:6px; font-size:25px;'>Subtraction</button></td>
+    <td><button id='mul' class="btn btn-success" style='margin-left:6px; font-size:25px;'>Multiplication</button></td>
+    <td><button id='div' class="btn btn-success" style='margin-left:6px; font-size:25px;'>Division</button></td>
+    <td><button id='tab' class="btn btn-success" style='margin-left:6px; font-size:25px;'>Table</button></td>
+    <td><button id='num' class="btn btn-success" style='margin-left:6px; font-size:25px;'>Numbers</button></td>
+  </tr>
+</table>
+<center>
+  <br>
+  <div id ='addition' ><input id='add_val1' class="btn btn-secondary" type='text' placeholder='Enter first number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+  <input id='add_sign' class="btn btn-secondary" type='text' value='+' style='background-color:green;padding:10px; width:35px; color:white;font-size:20px'>
+  <input id='add_val2' class="btn btn-secondary" type='text' placeholder='Enter second number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+    <input id='add_sum' class="btn btn-primary" type='button' value='submit' style='padding:15px; text-align: center; font-size:20px; color:white;'></div>
+<h2 id='add_sum_show' style='color:red; font-size:30px;'></h2>
+
+<div id ='subtraction' ><input id='sub_val1'class="btn btn-secondary" type='text' placeholder='Enter first number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+<input id='sub_sign' type='text' class="btn btn-secondary" value='-' style='background-color:green;padding:10px; width:35px; color:white;font-size:20px'>
+<input id='sub_val2' type='text' class="btn btn-secondary" placeholder='Enter second number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+  <input id='sub_num' class="btn btn-primary" type='button' value='submit' style='padding:15px; text-align: center; font-size:20px; color:white;'></div>
+<h2 id='sub_num_show' style='color:red; font-size:30px;'></h2>
+
+<div id ='multiplication' ><input id='mul_val1' class="btn btn-secondary" type='text' placeholder='Enter first number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+<input id='mul_sign' type='text' class="btn btn-secondary" value='*' style='background-color:green;padding:10px; width:35px; color:white;font-size:20px'>
+<input id='mul_val2' type='text' class="btn btn-secondary" placeholder='Enter second number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+  <input id='mul_num' type='button'  class="btn btn-primary" value='submit' style='padding:15px; text-align: center; font-size:20px; color:white;'></div>
+<h2 id='mul_num_show' style='color:red; font-size:30px;'></h2>
+
+<div id ='divison' ><input id='div_val1' class="btn btn-secondary" type='text' placeholder='Enter first number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+<input id='div_sign' class="btn btn-secondary" type='text' value='/' style='background-color:green;padding:10px; width:35px; color:white;font-size:20px'>
+<input id='div_val2'class="btn btn-secondary"  type='text' placeholder='Enter second number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+  <input id='div_num' class="btn btn-primary" type='button' value='submit' style='padding:15px; text-align: center; font-size:20px; color:white;'></div>
+<h2 id='div_num_show' style='color:red; font-size:30px;'></h2>
+
+
+
+  <div id ='input' ><input id='input_val' class="btn btn-secondary" type='text' placeholder='Enter the number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+    <input id='submit' class="btn btn-primary" type='button' value='submit' style='padding:15px; text-align: center; font-size:20px; color:white;'></div>
+  <div id='frame' class="jumbotron" style='background-color: green; margin-top:10px; height:700px; width:600px'>
+  <h2 id='1' style='padding:2px;color:orange;'></h2>
+  <h2 id='2' style='padding:2px;color:orange;'></h2>
+  <h2 id='3' style='padding:2px;color:orange;'></h2>
+  <h2 id='4' style='padding:2px;color:orange;'></h2>
+  <h2 id='5' style='padding:2px;color:orange;'></h2>
+  <h2 id='6' style='padding:2px;color:orange;'></h2>
+  <h2 id='7' style='padding:2px;color:orange;'></h2>
+  <h2 id='8' style='padding:2px;color:orange;'></h2>
+  <h2 id='9' style='padding:2px;color:orange;'></h2>
+  <h2 id='10' style='padding:2px;color:orange;'></h2>
+</div>
+
+
+<div id ='input_num' ><input id='input_num_val' class="btn btn-secondary" type='text' placeholder='Enter the number' value='' style='background-color:green;padding:15px; text-align: center; font-size:20px; color:white;'>
+  <input id='submit_num' class="btn btn-primary" type='button' value='submit' style='padding:15px; text-align: center; font-size:20px; color:white;'></div>
+<div id='frame2' class="jumbotron" style='background-color: green; margin-top:10px; height:700px; width:600px'>
+<h2 id='n1' style='padding:2px;color:orange;'></h2>
+<h2 id='n2' style='padding:2px;color:orange;'></h2>
+<h2 id='n3' style='padding:2px;color:orange;'></h2>
+<h2 id='n4' style='padding:2px;color:orange;'></h2>
+<h2 id='n5' style='padding:2px;color:orange;'></h2>
+<h2 id='n6' style='padding:2px;color:orange;'></h2>
+<h2 id='n7' style='padding:2px;color:orange;'></h2>
+<h2 id='n8' style='padding:2px;color:orange;'></h2>
+<h2 id='n9' style='padding:2px;color:orange;'></h2>
+<h2 id='n10' style='padding:2px;color:orange;'></h2>
+</div></center>
+</body>
+<script>
+$(document).ready(function(){
+
+  $("#add").click(function(){
+    $('#add_val1').val('');
+    $('#add_val2').val('');
+    $('#frame').hide();
+    $('#frame2').hide();
+    $('#input').hide();
+    $('#input_num').hide();
+    $('#subtraction').hide();
+    $('#divison').hide();
+    $('#multiplication').hide();
+    $('#div_num_show').hide();
+    $('#mul_num_show').hide();
+    $('#add_sum_show').hide();
+    $('#sub_num_show').hide();
+    $('#addition').show();
+  $("#add_sum").click(function(){
+    var num1 = $('#add_val1').val();
+    var num2 = $('#add_val2').val();
+    var sum = Number(num1) + Number(num2);
+    if (Number.isNaN(sum)){
+      alert('Please fill only integer or decimal value');
+    }
+    else{
+      $('#add_sum_show').text('The Sum of two numbers = ' + sum);
+      $('#add_sum_show').show();
+    }
+  });
+});
+
+$("#sub").click(function(){
+  $('#frame').hide();
+  $('#frame2').hide();
+  $('#input').hide();
+  $('#input_num').hide();
+  $('#divison').hide();
+  $('#multiplication').hide();
+  $('#addition').hide();
+  $('#div_num_show').hide();
+  $('#mul_num_show').hide();
+  $('#add_sum_show').hide();
+  $('#sub_num_show').hide();
+  $('#sub_val1').val('');
+  $('#sub_val2').val('');
+  $('#subtraction').show();
+$("#sub_num").click(function(){
+  var num1 = $('#sub_val1').val();
+  var num2 = $('#sub_val2').val();
+  var sub = Number(num1) - Number(num2);
+  if (Number.isNaN(sub)){
+    alert('Please fill only integer or decimal value');
+  }
+  else{
+    $('#sub_num_show').text('The subtraction of two numbers = ' + sub);
+    $('#sub_num_show').show();
+  }
+});
+});
+
+$("#mul").click(function(){
+  $('#frame').hide();
+  $('#frame2').hide();
+  $('#input').hide();
+  $('#input_num').hide();
+  $('#divison').hide();
+  $('#addition').hide();
+  $('#subtraction').hide();
+  $('#div_num_show').hide();
+  $('#mul_num_show').hide();
+  $('#add_sum_show').hide();
+  $('#sub_num_show').hide();
+  $('#mul_val1').val('');
+  $('#mul_val2').val('');
+  $('#multiplication').show();
+  $("#mul_num").click(function(){
+  var num1 = $('#mul_val1').val();
+  var num2 = $('#mul_val2').val();
+  var mul = Number(num1) * Number(num2);
+  if (Number.isNaN(mul)){
+    alert('Please fill only integer or decimal value');
+  }
+  else{
+    $('#mul_num_show').text('The multiplication of two numbers = ' + mul);
+    $('#mul_num_show').show();
+  }
+});
+});
+
+$("#div").click(function(){
+  $('#frame').hide();
+  $('#frame2').hide();
+  $('#input').hide();
+  $('#input_num').hide();
+  $('#addition').hide();
+  $('#subtraction').hide();
+  $('#multiplication').hide();
+  $('#div_num_show').hide();
+  $('#mul_num_show').hide();
+  $('#add_sum_show').hide();
+  $('#sub_num_show').hide();
+  $('#div_val1').val('');
+  $('#div_val2').val('');
+  $('#divison').show();
+  $("#div_num").click(function(){
+  var num1 = $('#div_val1').val();
+  var num2 = $('#div_val2').val();
+  var div = Number(num1) / Number(num2);
+  if (Number.isNaN(div)){
+    alert('Please fill only integer or decimal value');
+  }
+  else{
+    $('#div_num_show').text('The divison of two numbers = ' + div);
+    $('#div_num_show').show();
+  }
+});
+});
+  $("#tab").click(function(){
+    $('#frame').hide();
+    $('#frame2').hide();
+    $('#input_num').hide();
+    $('#addition').hide();
+    $('#subtraction').hide();
+    $('#multiplication').hide();
+    $('#divison').hide();
+    $('#div_num_show').hide();
+    $('#mul_num_show').hide();
+    $('#add_sum_show').hide();
+    $('#sub_num_show').hide();
+    $('#input_val').val('');
+    $('#input').show();
+    });
+  $("#submit").click(function(){
+    $('#1').text('');
+    $('#2').text('');
+    $('#3').text('');
+    $('#4').text('');
+    $('#5').text('');
+    $('#6').text('');
+    $('#7').text('');
+    $('#8').text('');
+    $('#9').text('');
+    $('#10').text('');
+  var num = $('#input_val').val();
+  for (i = 1; i <= 10; i++) {
+  val = 0;
+  val = num*i;
+  flag = 0;
+  if (Number.isNaN(val)){
+    alert('Please fill only integer or decimal value')
+    flag = flag + 1;
+    break;
+  };
+  if (i == 1){
+    $('#1').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 2){
+    $('#2').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 3){
+    $('#3').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 4){
+    $('#4').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 5){
+    $('#5').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 6){
+    $('#6').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 7){
+    $('#7').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 8){
+    $('#8').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 9){
+    $('#9').text(num + ' X ' + i + ' = ' + val);
+  };
+  if (i == 10){
+    $('#10').text(num + ' X ' + i + ' = ' + val);
+  };
+}
+if (flag == 0){
+  $('#frame').show();
+}
+else{
+$('#frame').hide();
+}
+});
+});
+
+$("#num").click(function(){
+  alert('It will only show numbers upto 100')
+  $('#frame').hide();
+  $('#frame2').hide();
+  $('#input_num').hide();
+  $('#addition').hide();
+  $('#subtraction').hide();
+  $('#multiplication').hide();
+  $('#divison').hide();
+  $('#input').hide();
+  $('#div_num_show').hide();
+  $('#mul_num_show').hide();
+  $('#add_sum_show').hide();
+  $('#sub_num_show').hide();
+  $('#input_num_val').val('');
+  $('#input_num').show();
+});
+$("#submit_num").click(function(){
+  $('#n1').text('');
+  $('#n2').text('');
+  $('#n3').text('');
+  $('#n4').text('');
+  $('#n5').text('');
+  $('#n6').text('');
+  $('#n7').text('');
+  $('#n8').text('');
+  $('#n9').text('');
+  $('#n10').text('');
+var num = $('#input_num_val').val();
+rem = num % 10;
+if (Number.isNaN(rem)){
+  alert('Please fill only integer value')
+}
+if (rem>0){
+  quo = num / 10;
+  if (num>9){
+  i_start = ~~quo + '1'
+  }
+  else{
+    i_start = 1;
+  }
+  i_end = Number(i_start) + Number(rem)
+  rem_val = ''
+  for(i=i_start; i<=(i_end-1); i++){
+    rem_val = rem_val + i + ' '
+};
+$('#n'+(~~quo+1)).text(rem_val);
+};
+val = '';
+for (i = 1; i <= num; i++) {
+val = val  + i + ' '
+if (Number.isNaN(val)){
+  alert('Please fill only integer or decimal value')
+  break;
+};
+if (i == 10){
+  $('#n1').text(val);
+  val = ''
+};
+if (i == 20){
+  $('#n2').text(val);
+  val = ''
+};
+if (i == 30){
+  $('#n3').text(val);
+  val = ''
+};
+if (i == 40){
+  $('#n4').text(val);
+  val = ''
+};
+if (i == 50){
+  $('#n5').text(val);
+  val = ''
+};
+if (i == 60){
+  $('#n6').text(val);
+  val = ''
+};
+if (i == 70){
+  $('#n7').text(val);
+  val = ''
+};
+if (i == 80){
+  $('#n8').text(val);
+  val = ''
+};
+if (i == 90){
+  $('#n9').text(val);
+  val = ''
+};
+if (i == 100){
+  $('#n10').text(val);
+  val = ''
+};
+$('#frame2').show()
+
+};
+});
+</script>
+{% endblock %}
+
+<!-- $.ajax({
+       type: "POST",
+       url: "/calculation.html",
+       data: data,
+       //contentType: "application/json; charset=utf-8",
+       dataType: "json",
+       async: false,
+       success: function (msg) {
+           if(msg.SUCCESS) {
+             alert('okay')
+                // $('#product_li_'+product_id).html("");
+                // $('.span_id').html('Total: Rs. '+ (msg.total_price_inr) +' / USD ' + msg.total_price_usd);
+           } else {
+              alert("error");
+           }
+       }
+      }); -->

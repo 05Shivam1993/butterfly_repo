@@ -1,0 +1,486 @@
+{% extends 'ButterflyApp/base.html'%}
+{% block childblock%}
+{% load staticfiles %}
+<head>
+  <title>English</title>
+   <style>
+  #back_to_alphabet{
+    display: none;
+}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body id='bg' background='{% static 'birds.gif' %}'>
+  <center><h1 style='background-color:black;margin-left:150px;margin-right:150px;padding:10px;color:white;'><u>Teach your kids with an amazing experience of fun</u></h1></center>
+   <div id='image_desc_block'>
+    <tr>
+    <td><h2 id='img_description' style='background-color:#66a832;padding:30px;color:white;margin-left:350px;margin-right:350px; text-align:right;'><marquee id='img_desc'>Press the key to view the images</marquee></td>
+  </tr>
+</div>
+  <center><button id='back_to_alphabet' class="btn btn-warning";>Back to Alphabet</button></center><br>
+<div id='image'>
+  <center><img id='image_src' src="" height="300" width="300" alt="coming"/></center>
+</div>
+
+<div id='char'>
+  <table style='margin:auto'>
+    <tr>
+      <td><button type="button" class="btn btn-success" id='a' style='margin-bottom:6px; margin-left:6px; font-size:25px'>A</button></td>
+      <td><button type="button" class="btn btn-success" id='b' style='margin-bottom:6px; margin-left:6px; font-size:25px'>B</button></td>
+      <td><button type="button" class="btn btn-success" id='c' style='margin-bottom:6px; margin-left:6px; font-size:25px'>C</button></td>
+      <td><button type="button" class="btn btn-success" id='d' style='margin-bottom:6px; margin-left:6px; font-size:25px'>D</button></td>
+      <td><button type="button" class="btn btn-success" id='e' style='margin-bottom:6px; margin-left:6px; font-size:25px'>E</button></td>
+      <td><button type="button" class="btn btn-success" id='f' style='margin-bottom:6px; margin-left:6px; font-size:25px'>F</button></td>
+      <td><button type="button" class="btn btn-success" id='g' style='margin-bottom:6px; margin-left:6px; font-size:25px'>G</button></td>
+      <td><button type="button" class="btn btn-success" id='h' style='margin-bottom:6px; margin-left:6px; font-size:25px'>H</button></td>
+      <td><button type="button" class="btn btn-success" id='i' style='margin-bottom:6px; margin-left:6px; font-size:25px'>I</button></td>
+      <td><button type="button" class="btn btn-success" id='j' style='margin-bottom:6px; margin-left:6px; font-size:25px'>J</button></td>
+      <td><button type="button" class="btn btn-success" id='k' style='margin-bottom:6px; margin-left:6px; font-size:25px'>K</button></td>
+      <td><button type="button" class="btn btn-success" id='l' style='margin-bottom:6px; margin-left:6px; font-size:25px'>L</button></td>
+      <td><button type="button" class="btn btn-success" id='m' style='margin-bottom:6px; margin-left:6px; font-size:25px'>M</button></td>
+</tr>
+<tr>
+      <td><button type="button" class="btn btn-success" id='n' style='font-size:25px; margin-left:6px;'>N</button></td>
+      <td><button type="button" class="btn btn-success" id='o' style='font-size:25px; margin-left:6px;'>O</button></td>
+      <td><button type="button" class="btn btn-success" id='p' style='font-size:25px; margin-left:6px;'>P</button></td>
+      <td><button type="button" class="btn btn-success" id='q' style='font-size:25px; margin-left:6px;'>Q</button></td>
+      <td><button type="button" class="btn btn-success" id='r' style='font-size:25px; margin-left:6px;'>R</button></td>
+      <td><button type="button" class="btn btn-success" id='s' style='font-size:25px; margin-left:6px;'>S</button></td>
+      <td><button type="button" class="btn btn-success" id='t' style='font-size:25px; margin-left:6px;'>T</button></td>
+      <td><button type="button" class="btn btn-success" id='u' style='font-size:25px; margin-left:6px;'>U</button></td>
+      <td><button type="button" class="btn btn-success" id='v' style='font-size:25px; margin-left:6px;'>V</button></td>
+      <td><button type="button" class="btn btn-success" id='w' style='font-size:25px; margin-left:6px;'>W</button></td>
+      <td><button type="button" class="btn btn-success" id='x' style='font-size:25px; margin-left:6px;'>X</button></td>
+      <td><button type="button" class="btn btn-success" id='y' style='font-size:25px; margin-left:6px;'>Y</button></td>
+      <td><button type="button" class="btn btn-success" id='z' style='font-size:25px; margin-left:6px;'>Z</button></td>
+</tr>
+  </table>
+</div>
+</body>
+<script>
+$(document).ready(function(){
+  $('#back_to_alphabet').hide();
+  $("#image").hide();
+  $("#char").show();
+  $("#back_to_alphabet").click(function(){
+    $("#image").hide();
+    $("#char").show();
+    $('#back_to_alphabet').hide();
+  });
+  $("#a").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'giphy.gif' %}');
+    $('#img_desc').text('A for Apple')
+    $("#image_desc_block").show();
+    alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+
+
+  });
+  $("#b").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'b.gif' %}');
+    $('#img_desc').text('B for Ball')
+    $("#image_desc_block").show();
+    alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#c").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'c.gif' %}');
+    $('#img_desc').text('C for Cat')
+    $("#image_desc_block").show();
+    alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#d").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'd.gif' %}');
+    $('#img_desc').text('D for Dog')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#e").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'elephant.gif' %}');
+    $('#img_desc').text('E for Elephant')
+    $("#image_desc_block").show();
+
+    alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#f").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'fish.gif' %}');
+    $('#img_desc').text('F for Fish')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#g").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'goat.gif' %}');
+    $('#img_desc').text('G for Goat')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#h").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'hen.gif' %}');
+    $('#img_desc').text('H for Hen')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#i").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'ice_cream.gif' %}');
+    $('#img_desc').text('I for Ice Cream')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#j").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'jug.gif' %}');
+    $('#img_desc').text('J for Jug')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#k").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'kite.gif' %}');
+    $('#img_desc').text('K for Kite')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#l").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'lion1.gif' %}');
+    $('#img_desc').text('L for Lion')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#m").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'monkey.gif' %}');
+    $('#img_desc').text('M for Monkey')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#n").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'nest.gif' %}');
+    $('#img_desc').text('N for Nest')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#o").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'octopus.gif' %}');
+    $('#img_desc').text('O for Octopus')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#p").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'parrot.gif' %}');
+    $('#img_desc').text('P for Parrot')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#q").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'queen.gif' %}');
+    $('#img_desc').text('Q for Queen')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#r").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'rat.gif' %}');
+    $('#img_desc').text('R for Rat')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#s").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'ship.gif' %}');
+    $('#img_desc').text('S for Ship')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#t").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'train.gif' %}');
+    $('#img_desc').text('T for Train')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#u").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'umbrella.gif' %}');
+    $('#img_desc').text('U for Umbrella')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#v").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'violin.gif' %}');
+    $('#img_desc').text('V for Violin')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#w").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'watch.gif' %}');
+    $('#img_desc').text('W for Watch')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#x").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'christmas.gif' %}');
+    $('#img_desc').text('X for X-Mas Tree')
+    $("#image_desc_block").show();
+
+     alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#y").click(function(){
+    $("#char").hide();
+    $("#image").hide();
+    $("#image_src").attr('src','{% static 'yatch.gif' %}');
+    $('#img_desc').text('Y for Yatch')
+    $("#image_desc_block").show();
+
+      alert('Please wait while image is loading')
+    setTimeout(function(){
+      $('#image').show();// or slideDown();  or fadeIn();
+    }, 2000);
+    setTimeout(function(){
+      $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+    }, 2000);
+  });
+
+  $("#z").click(function(){
+    $("#image").hide();
+    $("#char").hide();
+    $("#image_src").attr('src','{% static 'zebra.gif' %}');
+    $('#img_desc').text('Z for Zebra')
+    $("#image_desc_block").show();
+
+    alert('Please wait while image is loading')
+  setTimeout(function(){
+    $('#image').show();// or slideDown();  or fadeIn();
+  }, 2000);
+  setTimeout(function(){
+    $('#back_to_alphabet').show();// or slideDown();  or fadeIn();
+  }, 2000);
+});
+
+});
+</script>
+{% endblock %}

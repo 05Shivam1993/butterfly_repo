@@ -1,0 +1,36 @@
+<html>
+{% load staticfiles %}
+<head>
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="{% static 'ButterflyApp/contact_form.css' %}"/>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body style='background:#a759eb;'>
+  <div class = "frame">
+<div id = "button_open_envelope">
+      Email me
+    </div>
+    <div class = "message">
+      <form method="post" action="">
+        <input type="text" name="name" id="name" placeholder=" Name* " required>
+
+        <input type="email" name="email" id="email" placeholder=" Email* " required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$">
+
+        <input type="text" name="phone" id="phone" placeholder=" Phone (optional)" autofocus>
+
+        <textarea name="message" id="messarea" placeholder=" Message* " required></textarea>
+
+        <input type="text" name="address" id="address" style="display: none;">
+        {% csrf_token %}
+        <input type="submit" value="Send" id="send">
+      </form>
+    </div>
+    <div class = "bottom"></div>
+    <div class = "left"></div>
+    <div class = "right"></div>
+    <div class = "top"></div>
+    <script src="{% static 'ButterflyApp_Js/contact_form.js' %}"></script>
+  </div>
+</body>
+</html>
